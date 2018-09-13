@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<body>
+<script>
+    let DateDiff = {
+
+        inDays: function(d1, d2) {
+            let t2 = d2.getTime();
+            let t1 = d1.getTime();
+
+            return parseInt((t2-t1)/(24*3600*1000));
+        },
+
+        inWeeks: function(d1, d2) {
+            let t2 = d2.getTime();
+            let t1 = d1.getTime();
+
+            return parseInt((t2-t1)/(24*3600*1000*7));
+        },
+
+        inMonths: function(d1, d2) {
+            let d1Y = d1.getFullYear();
+            let d2Y = d2.getFullYear();
+            let d1M = d1.getMonth();
+            let d2M = d2.getMonth();
+
+            return (d2M+12*d2Y)-(d1M+12*d1Y);
+        },
+
+        inYears: function(d1, d2) {
+            return d2.getFullYear()-d1.getFullYear();
+        }
+    };
+    let bornDate = new Date();
+    bornDate.setFullYear(2000,8,16);
+    bornDate.setHours(15,28,3);
+    let nowDate = new Date();
+    nowDate.setTime(Date.now());
+
+
+    console.log("tôi đã sống "+ DateDiff.inYears(bornDate,nowDate) +" năm");
+    console.log("tôi đã sống "+ DateDiff.inMonths(bornDate,nowDate)+" Tháng");
+    console.log("tôi đã sống "+ DateDiff.inWeeks(bornDate,nowDate)+" week");
+    console.log("tôi đã sống "+ DateDiff.inDays(bornDate,nowDate)+" Ngày");
+    console.log("tôi đã sống "+ (nowDate.getTime()-bornDate.getTime())/10/3600+" Giờ");
+    console.log("tôi đã sống "+ (nowDate.getTime()-bornDate.getTime())/10/60+" Phút");
+    console.log("tôi đã sống "+ (nowDate.getTime()-bornDate.getTime())/10 + "sec");
+    console.log("tôi đã sống "+ (nowDate.getTime()-bornDate.getTime())+" milisec");
+
+
+
+
+
+</script>
+</body>
+</html>
